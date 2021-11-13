@@ -1,0 +1,24 @@
+<div class="flex space-x-2 items-center" role="button" [routerLink]="['/']">
+  <img [src]="logoURL" class="max-w-100" alt="Logo of Geochem Pro" />
+  <ng-container *ngIf="showFullLogo">
+    <div [@panelInOut]>
+      <ng-content></ng-content>
+    </div>
+  </ng-container>
+  <geochem-icon-button *ngIf="configurable" (click)="toggle()">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      class="h-4 w-4"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M4 6h16M4 12h16M4 18h16"
+      />
+    </svg>
+  </geochem-icon-button>
+</div>

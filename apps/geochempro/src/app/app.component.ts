@@ -5,9 +5,17 @@ import { Message } from '@geochem/api-interfaces';
 @Component({
   selector: 'geochem-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
+  styles: [],
 })
 export class AppComponent {
+  currentDate = new Date();
+
+  opened = true;
+
   hello$ = this.http.get<Message>('/api/hello');
   constructor(private http: HttpClient) {}
+
+  toggleSideNav() {
+    this.opened = !this.opened;
+  }
 }

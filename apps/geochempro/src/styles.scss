@@ -1,1 +1,15 @@
-/* You can add global styles to this file, and also import other style files */
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+/* Ripple effect */
+.ripple {
+    background-position: center;
+    transition: background 0.8s;
+}
+
+.ripple:active {
+    background-color: #6eb9f7;
+    background-size: 100%;
+    transition: background 0s;
+}
