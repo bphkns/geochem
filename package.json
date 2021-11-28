@@ -28,6 +28,8 @@
     "@nestjs/platform-fastify": "^8.0.0",
     "@nestjs/swagger": "^5.1.5",
     "@nestjs/throttler": "^2.0.0",
+    "@ngneat/helipopper": "^5.0.2",
+    "@ngneat/overview": "^3.0.0",
     "@ngneat/svg-icon": "^3.3.0",
     "@nrwl/angular": "13.2.3",
     "@rx-angular/cdk": "^1.0.0-alpha.10",
@@ -52,6 +54,7 @@
     "reflect-metadata": "^0.1.13",
     "rxjs": "^7.0.0",
     "source-map-support": "^0.5.20",
+    "tippy.js": "^6.3.7",
     "tslib": "^2.0.0",
     "zone.js": "0.11.4"
   },

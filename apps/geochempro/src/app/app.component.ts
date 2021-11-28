@@ -13,7 +13,7 @@ export class AppComponent {
   items: NavSideListItem[] = [
     {
       name: 'home',
-      link: '/home',
+      link: 'pages/home',
       key: 'home',
     },
   ];

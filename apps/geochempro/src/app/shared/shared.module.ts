@@ -13,7 +13,9 @@ import { UiModule } from '@geochem/ui';
 import { RouterModule } from '@angular/router';
 import { SidenavListComponent } from './components/sidenav-list/sidenav-list.component';
 import { SvgIconsModule } from '@ngneat/svg-icon';
-
+import { NavbarRightComponent } from './components/navbar/navbar-right/navbar-right.component';
+import { ProfileComponent } from './components/navbar/navbar-right/profile/profile.component';
+import { TippyModule } from '@ngneat/helipopper';
 @NgModule({
   declarations: [
     NavbarComponent,
@@ -25,12 +27,15 @@ import { SvgIconsModule } from '@ngneat/svg-icon';
     ListComponent,
     ListItemComponent,
     SidenavListComponent,
+    NavbarRightComponent,
+    ProfileComponent,
   ],
   imports: [
     CommonModule,
     UiModule,
     RouterModule.forChild([]),
     SvgIconsModule.forChild([]),
+    TippyModule,
   ],
   exports: [
     ReactiveFormsModule,
@@ -47,6 +52,8 @@ import { SvgIconsModule } from '@ngneat/svg-icon';
     ListComponent,
     ListItemComponent,
     SidenavListComponent,
+    NavbarRightComponent,
+    ProfileComponent,
   ],
 })
 export class SharedModule {}

@@ -9,11 +9,14 @@
             (sideToggle)="toggleSideNav()"
             [showFullLogo]="opened"
           >
-            <h3 class="text-xl">GeochemPro</h3>
+            <h3 class="text-xl select-none">GeochemPro</h3>
           </geochem-logo>
         </div>
         <div geochemNavRight>
-          <a (click)="login()">Login</a>
+          <geochem-navbar-right>
+            <a (click)="login()">Login</a>
+            <geochem-profile></geochem-profile>
+          </geochem-navbar-right>
         </div>
       </geochem-navbar>
     </header>
@@ -27,7 +30,9 @@
         </div>
 
         <div geochemNavContent class="flex-grow flex flex-col">
-          <div class="flex-grow"></div>
+          <div class="flex-grow">
+            <router-outlet></router-outlet>
+          </div>
           <geochem-footer
             [date]="currentDate"
             text="Geochem Pro reserved"

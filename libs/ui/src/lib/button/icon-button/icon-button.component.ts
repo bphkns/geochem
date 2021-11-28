@@ -12,7 +12,10 @@ import { Component, Input } from '@angular/core';
       items-center
       p-1
     "
-      [ngClass]="{ 'hover:bg-gray-200': hoverAble }"
+      [ngClass]="{
+        'hover:bg-gray-200': hoverAble,
+        ' ring-2 ring-gray-200': shadow
+      }"
     >
       <ng-content> </ng-content>
     </div>
@@ -22,4 +25,7 @@ import { Component, Input } from '@angular/core';
 export class IconButtonComponent {
   @Input()
   hoverAble = true;
+
+  @Input()
+  shadow = false;
 }

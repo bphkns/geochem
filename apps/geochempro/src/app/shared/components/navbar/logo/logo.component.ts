@@ -1,20 +1,12 @@
 import { Location } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { trigger, transition, style, animate } from '@angular/animations';
+import { panelInOut } from '../../../animations/side-slide.animation';
 
 @Component({
   selector: 'geochem-logo',
   templateUrl: './logo.component.html',
   styles: [],
-  animations: [
-    trigger('panelInOut', [
-      transition('void => *', [
-        style({ transform: 'translateX(-20%)' }),
-        animate(300),
-      ]),
-      transition('* => void', [animate(300, style({ opacity: 0 }))]),
-    ]),
-  ],
+  animations: [panelInOut],
 })
 export class LogoComponent {
   @Input()
