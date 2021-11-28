@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'geochem-icon-button',
@@ -6,17 +6,20 @@ import { Component } from '@angular/core';
     <div
       role="button"
       class="
-      hover:bg-gray-200
       active:text-blue-500 active:animate-ping
       rounded-full
       flex
       items-center
       p-1
     "
+      [ngClass]="{ 'hover:bg-gray-200': hoverAble }"
     >
       <ng-content> </ng-content>
     </div>
   `,
   styles: [],
 })
-export class IconButtonComponent {}
+export class IconButtonComponent {
+  @Input()
+  hoverAble = true;
+}

@@ -1,11 +1,11 @@
 <div class="w-full h-full flex">
   <div
-    class="shadow -mb-1 py-4 px-2 transition-all duration-500 ease-in-out"
+    class="shadow py-4 px-2 transition-all duration-500 ease-in-out"
     [ngClass]="{ 'w-32': opened, 'w-16': !opened }"
   >
     <ng-content select="[geochemSidebar]"></ng-content>
   </div>
-  <div class="px-4 flex-grow flex">
+  <div class="flex-grow flex">
     <ng-content select="[geochemNavContent]"></ng-content>
   </div>
 </div>

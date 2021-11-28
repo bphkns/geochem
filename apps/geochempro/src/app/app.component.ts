@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Message } from '@geochem/api-interfaces';
+import { AuthService } from '@auth0/auth0-angular';
+import { NavSideListItem } from './shared/components/sidenav-list/sidenav-list.component';
 
 @Component({
   selector: 'geochem-root',
@@ -9,13 +9,21 @@ import { Message } from '@geochem/api-interfaces';
 })
 export class AppComponent {
   currentDate = new Date();
-
-  opened = true;
-
-  hello$ = this.http.get<Message>('/api/hello');
-  constructor(private http: HttpClient) {}
+  opened = false;
+  items: NavSideListItem[] = [
+    {
+      name: 'home',
+      link: '/home',
+      key: 'home',
+    },
+  ];
+  constructor(public authService: AuthService) {}
 
   toggleSideNav() {
     this.opened = !this.opened;
+  }
+
+  login() {
+    this.authService.loginWithRedirect();
   }
 }

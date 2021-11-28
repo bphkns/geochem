@@ -11,6 +11,8 @@ import { ListComponent } from './components/list/list.component';
 import { ListItemComponent } from './components/list/list-item/list-item.component';
 import { UiModule } from '@geochem/ui';
 import { RouterModule } from '@angular/router';
+import { SidenavListComponent } from './components/sidenav-list/sidenav-list.component';
+import { SvgIconsModule } from '@ngneat/svg-icon';
 
 @NgModule({
   declarations: [
@@ -22,8 +24,14 @@ import { RouterModule } from '@angular/router';
     FooterComponent,
     ListComponent,
     ListItemComponent,
+    SidenavListComponent,
   ],
-  imports: [CommonModule, UiModule, RouterModule.forChild([])],
+  imports: [
+    CommonModule,
+    UiModule,
+    RouterModule.forChild([]),
+    SvgIconsModule.forChild([]),
+  ],
   exports: [
     ReactiveFormsModule,
     UiModule,
@@ -38,6 +46,7 @@ import { RouterModule } from '@angular/router';
     FooterComponent,
     ListComponent,
     ListItemComponent,
+    SidenavListComponent,
   ],
 })
 export class SharedModule {}

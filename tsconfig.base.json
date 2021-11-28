@@ -15,9 +15,9 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@app/svg/*": ["apps/geochempro/src/app/svg/*"],
       "@geochem/api-interfaces": ["libs/api-interfaces/src/index.ts"],
-      "@geochem/ui": ["libs/ui/src/index.ts"],
-      "@app/svg/*": ["apps/geochempro/src/app/svg/*"]
+      "@geochem/ui": ["libs/ui/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

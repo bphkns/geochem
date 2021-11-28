@@ -1,33 +1,45 @@
 <div class="h-screen w-screen flex flex-col font-body">
-  <header>
-    <geochem-navbar>
-      <div geochemNavLeft>
-        <geochem-logo
-          imgURL="/assets/svg/logo-short.svg"
-          [configurable]="true"
-          (sideToggle)="toggleSideNav()"
-        >
-          <h3 class="text-xl">GeochemPro</h3>
-        </geochem-logo>
-      </div>
-      <div geochemNavRight>Hello</div>
-    </geochem-navbar>
-  </header>
-  <main class="flex-grow">
-    <geochem-ui-sidenav [opened]="opened">
-      <div geochemSidebar>
-        <div class="flex justify-center items-end space-x-1">
-          <geochem-icon-button>
-            <svg-icon key="home" size="xl"></svg-icon
-          ></geochem-icon-button>
-          <a class=""> Home</a>
+  <ng-container *rxLet="authService.isLoading$; let loading">
+    <header>
+      <geochem-navbar>
+        <div geochemNavLeft>
+          <geochem-logo
+            imgURL="/assets/svg/logo-short.svg"
+            [configurable]="true"
+            (sideToggle)="toggleSideNav()"
+            [showFullLogo]="opened"
+          >
+            <h3 class="text-xl">GeochemPro</h3>
+          </geochem-logo>
         </div>
+        <div geochemNavRight>
+          <a (click)="login()">Login</a>
+        </div>
+      </geochem-navbar>
+    </header>
+    <main class="flex-grow">
+      <geochem-ui-sidenav [opened]="opened" *ngIf="!loading">
+        <div geochemSidebar>
+          <geochem-sidenav-list
+            [open]="opened"
+            [items]="items"
+          ></geochem-sidenav-list>
+        </div>
+
+        <div geochemNavContent class="flex-grow flex flex-col">
+          <div class="flex-grow"></div>
+          <geochem-footer
+            [date]="currentDate"
+            text="Geochem Pro reserved"
+          ></geochem-footer>
+        </div>
+      </geochem-ui-sidenav>
+      <div
+        class="w-full h-full flex justify-center items-center"
+        *ngIf="loading"
+      >
+        <img src="/assets/loader.gif" alt="Loading page" />
       </div>
-      <div geochemNavContent>Hello</div>
-    </geochem-ui-sidenav>
-  </main>
-  <geochem-footer
-    [date]="currentDate"
-    text="Geochem Pro reserved"
-  ></geochem-footer>
+    </main>
+  </ng-container>
 </div>

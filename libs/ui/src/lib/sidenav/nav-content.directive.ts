@@ -1,10 +1,8 @@
 import { Directive } from '@angular/core';
 
 @Directive({
-  selector: '[geochemNavContent]'
+  selector: '[geochemNavContent]',
 })
 export class NavContentDirective {
-
-  constructor() { }
-
+  constructor() {}
 }
