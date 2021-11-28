@@ -22,8 +22,8 @@ async function bootstrap() {
   );
   const globalPrefix = 'api';
   const configService = app.get(ConfigService);
-  const port = configService.get('PORT');
-  const cookieSecret = configService.get('COOKIE_SECRET');
+  const port = configService.get<number>('PORT');
+  const cookieSecret = configService.get<string>('COOKIE_SECRET');
   app.enableCors();
   app.enableVersioning({
     type: VersioningType.URI,
