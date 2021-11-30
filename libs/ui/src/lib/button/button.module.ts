@@ -16,6 +16,7 @@ import { IconButtonComponent } from './icon-button/icon-button.component';
   ],
   imports: [CommonModule],
   exports: [
+    ButtonComponent,
     PrimaryButtonDirective,
     AccentButtonDirective,
     WarnButtonDirective,

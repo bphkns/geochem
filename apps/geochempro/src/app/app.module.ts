@@ -14,11 +14,20 @@ import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
+import { GLOBAL_APP_STATE } from './state/global-state';
 import { geochemHomeIcon } from './svg/home';
+import { geochemKeyDownIcon } from './svg/key-down';
 import { geochemLockIcon } from './svg/lock';
 import { geochemManAvatarIcon } from './svg/man-avatar';
 import { geochemProfileDetailsIcon } from './svg/profile-details';
 import { geochemProfileUserIcon } from './svg/profile-user';
+import { geochemProjectIcon } from './svg/project';
+import { geochemTaskIcon } from './svg/task';
+import { RxState } from '@rx-angular/state';
+import { GlobalState } from '@geochem/api-interfaces';
+import { geochemProjectDetailsIcon } from './svg/project-details';
+import { geochemListIcon } from './svg/list';
+import { geochemSettingsIcon } from './svg/settings';
 
 const ICONS_LIST = [
   geochemHomeIcon,
@@ -26,6 +35,12 @@ const ICONS_LIST = [
   geochemProfileDetailsIcon,
   geochemLockIcon,
   geochemManAvatarIcon,
+  geochemKeyDownIcon,
+  geochemTaskIcon,
+  geochemProjectIcon,
+  geochemProjectDetailsIcon,
+  geochemListIcon,
+  geochemSettingsIcon,
 ];
 
 @NgModule({
@@ -48,6 +63,7 @@ const ICONS_LIST = [
     }),
     AuthModule.forRoot({
       ...environment.auth,
+      errorPath: '/login',
     }),
     LetModule,
     TippyModule.forRoot({
@@ -69,7 +85,12 @@ const ICONS_LIST = [
     AppRoutingModule,
     SharedModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: GLOBAL_APP_STATE,
+      useFactory: () => new RxState<GlobalState>(),
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

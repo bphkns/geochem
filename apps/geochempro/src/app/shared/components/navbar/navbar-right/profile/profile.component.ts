@@ -1,12 +1,26 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { User } from '@geochem/api-interfaces';
+import { AuthHelperService } from '../../../../auth/auth.service';
 
 @Component({
   selector: 'geochem-profile',
   template: `
-    <div>
-      <geochem-icon-button [shadow]="true" [tippy]="one" variation="menu">
-        <svg-icon key="profile-details" size="xl"> </svg-icon>
-      </geochem-icon-button>
+    <div class="flex space-x-2 items-center" *ngIf="user">
+      <div class="flex rounded-full">
+        <img class="object-cover rounded-full w-6 h-6" [src]="user.picture" />
+      </div>
+      <div class="flex items-center text-gray-700 select-none space-x-2">
+        <span class="break-all"> {{ user.nickname }} </span>
+        <geochem-icon-button
+          [shadow]="true"
+          [hoverAble]="true"
+          [tippy]="one"
+          variation="menu"
+          placement="auto"
+        >
+          <svg-icon key="key-down" size="md"> </svg-icon>
+        </geochem-icon-button>
+      </div>
     </div>
 
     <ng-template #one>
@@ -16,12 +30,6 @@ import { Component, OnInit } from '@angular/core';
         aria-orientation="vertical"
         aria-labelledby="options-menu"
       >
-        <div
-          class="flex items-center text-gray-400 px-4 py-2 select-none space-x-2"
-        >
-          <svg-icon size="xl" key="man-avatar"> </svg-icon>
-          <span class="break-all"> John Jackson </span>
-        </div>
         <a
           href="#"
           class="flex items-center  px-4 py-2 space-x-2 text-md text-gray-700 hover:bg-gray-100 hover:text-blue-700 dark:text-gray-100 dark:hover:text-white dark:hover:bg-gray-600"
@@ -36,6 +44,7 @@ import { Component, OnInit } from '@angular/core';
           href="#"
           class="flex items-center  px-4 py-2 space-x-2 text-md text-gray-700 hover:bg-gray-100 hover:text-blue-700 dark:text-gray-100 dark:hover:text-white dark:hover:bg-gray-600"
           role="menuitem"
+          (click)="logout()"
         >
           <div
             class="flex items-center bg-gray-100 p-1 rounded-full shadow-inner"
@@ -50,7 +59,14 @@ import { Component, OnInit } from '@angular/core';
   styles: [],
 })
 export class ProfileComponent implements OnInit {
-  constructor() {}
+  @Input()
+  user!: User;
+
+  constructor(private authhelper: AuthHelperService) {}
 
   ngOnInit(): void {}
+
+  logout() {
+    this.authhelper.logout();
+  }
 }

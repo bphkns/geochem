@@ -9,6 +9,9 @@ export class SidenavComponent implements OnInit {
   @Input()
   opened = true;
 
+  @Input()
+  showSideBar = false;
+
   constructor() {}
 
   ngOnInit(): void {}

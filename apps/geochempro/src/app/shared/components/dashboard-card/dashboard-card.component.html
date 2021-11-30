@@ -1,0 +1,17 @@
+<div class="shadow-lg rounded p-4 bg-white dark:bg-gray-800" role="button">
+  <div class="flex items-center">
+    <div
+      class="py-1.5 px-2 flex justify-center items-center rounded-full {{
+        color
+      }}"
+    >
+      <svg-icon [key]="key" size="lg"></svg-icon>
+    </div>
+    <p class="text-md text-gray-700 dark:text-gray-50 ml-2">{{ text }}</p>
+  </div>
+  <div class="flex flex-col justify-start">
+    <p class="ml-1 text-gray-800 text-2xl text-left dark:text-white font-bold">
+      {{ count }}
+    </p>
+  </div>
+</div>

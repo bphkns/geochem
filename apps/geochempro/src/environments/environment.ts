@@ -6,6 +6,7 @@ export const environment = {
     organization: 'org_paqMYnLk3QEOXwly',
     redirectUri: window.location.origin,
   },
+  namespace: `https://auth.geochempro.com`,
 };
 
 import 'zone.js/plugins/zone-error'; // Included with Angular CLI.

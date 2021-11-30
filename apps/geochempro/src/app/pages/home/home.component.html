@@ -1,1 +1,29 @@
-<p>home works!</p>
+<ng-container *rxLet="user$; let user">
+  <div *ngIf="user" class="flex-grow flex flex-col">
+    <div *ngIf="user.roles | hasRole: ['org-admin']" class="flex space-x-4">
+      <geochem-dashboard-card
+        key="project-details"
+        text="Projects"
+        count="12"
+      ></geochem-dashboard-card>
+
+      <geochem-dashboard-card
+        key="project-details"
+        text="Projects"
+        count="12"
+      ></geochem-dashboard-card>
+
+      <geochem-dashboard-card
+        key="project-details"
+        text="Projects"
+        count="12"
+      ></geochem-dashboard-card>
+
+      <geochem-dashboard-card
+        key="project-details"
+        text="Projects"
+        count="12"
+      ></geochem-dashboard-card>
+    </div>
+  </div>
+</ng-container>

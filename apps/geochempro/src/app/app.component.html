@@ -1,36 +1,56 @@
 <div class="h-screen w-screen flex flex-col font-body">
-  <ng-container *rxLet="authService.isLoading$; let loading">
+  <ng-container *rxLet="state.$; let state; rxSuspense: suspense">
     <header>
       <geochem-navbar>
         <div geochemNavLeft>
           <geochem-logo
             imgURL="/assets/svg/logo-short.svg"
-            [configurable]="true"
+            [configurable]="!!state.user"
             (sideToggle)="toggleSideNav()"
-            [showFullLogo]="opened"
+            [showFullLogo]="opened || !state.user"
           >
             <h3 class="text-xl select-none">GeochemPro</h3>
           </geochem-logo>
         </div>
         <div geochemNavRight>
           <geochem-navbar-right>
-            <a (click)="login()">Login</a>
-            <geochem-profile></geochem-profile>
+            <a
+              (click)="login()"
+              *ngIf="!state.user"
+              class="
+                select-none
+                text-red-400
+                cursor-pointer
+                hover:underline hover:text-blue-500
+                active:animate-ping
+              "
+              >Login</a
+            >
+            <geochem-profile
+              *ngIf="state.user"
+              [user]="state.user"
+            ></geochem-profile>
           </geochem-navbar-right>
         </div>
       </geochem-navbar>
     </header>
-    <main class="flex-grow">
-      <geochem-ui-sidenav [opened]="opened" *ngIf="!loading">
-        <div geochemSidebar>
+    <main class="flex-grow overflow-auto">
+      <geochem-ui-sidenav
+        [opened]="opened"
+        *ngIf="!state.loading"
+        [showSideBar]="!!state.user"
+      >
+        <div geochemSidebar *ngIf="state.user">
           <geochem-sidenav-list
             [open]="opened"
             [items]="items"
+            [roles]="state.user.roles"
           ></geochem-sidenav-list>
         </div>
 
-        <div geochemNavContent class="flex-grow flex flex-col">
-          <div class="flex-grow">
+        <div geochemNavContent class="flex-grow flex flex-col overflow-auto">
+          <div class="h-full w-full p-4 flex">
+            <!-- Router outlet -->
             <router-outlet></router-outlet>
           </div>
           <geochem-footer
@@ -41,10 +61,16 @@
       </geochem-ui-sidenav>
       <div
         class="w-full h-full flex justify-center items-center"
-        *ngIf="loading"
+        *ngIf="state.loading"
       >
         <img src="/assets/loader.gif" alt="Loading page" />
       </div>
     </main>
   </ng-container>
 </div>
+
+<ng-template #suspense>
+  <div class="w-full h-full flex justify-center items-center">
+    <img src="/assets/loader.gif" alt="Loading page" />
+  </div>
+</ng-template>

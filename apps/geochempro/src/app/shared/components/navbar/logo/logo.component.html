@@ -1,10 +1,12 @@
-<div class="flex space-x-2 items-center" role="button" [routerLink]="['/']">
-  <img [src]="logoURL" class="max-w-100" alt="Logo of Geochem Pro" />
-  <ng-container *ngIf="showFullLogo">
-    <div [@panelInOut]>
-      <ng-content></ng-content>
-    </div>
-  </ng-container>
+<div class="flex space-x-2 items-center" role="button">
+  <a routerLink="/" class="flex items-center space-x-2">
+    <img [src]="logoURL" class="max-w-100" alt="Logo of Geochem Pro" />
+    <ng-container *ngIf="showFullLogo">
+      <div [@panelInOut]>
+        <ng-content></ng-content>
+      </div>
+    </ng-container>
+  </a>
   <geochem-icon-button *ngIf="configurable" (click)="toggle()">
     <svg
       xmlns="http://www.w3.org/2000/svg"
