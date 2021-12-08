@@ -14,6 +14,6 @@ import { JwtStrategy } from './jwt.strategy';
     PassportModule.register({ defaultStrategy: 'jwt' }),
   ],
   providers: [JwtStrategy, clientConnectionFactory, mgmtConnectionFactory],
-  exports: [PassportModule],
+  exports: [PassportModule, clientConnectionFactory, mgmtConnectionFactory],
 })
 export class AuthzModule {}

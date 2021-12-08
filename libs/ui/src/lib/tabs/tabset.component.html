@@ -1,0 +1,55 @@
+<ul
+  class="nav flex mb-2"
+  [ngClass]="classMap"
+  (click)="$event.preventDefault()"
+  [attr.aria-label]="ariaLabel"
+  role="tablist"
+>
+  <li
+    *ngFor="let tabz of tabs; let i = index"
+    [ngClass]="[
+      'nav-item w-48 bg-purple-100 p-1 flex first:rounded-l last:rounded-r',
+      tabz.customClass || ''
+    ]"
+    [class.active]="tabz.active"
+    [class.disabled]="tabz.disabled"
+    (keydown)="keyNavActions($event, i)"
+  >
+    <a
+      href="javascript:void(0);"
+      class="
+        nav-link
+        flex-grow flex
+        justify-center
+        items-center
+        py-2.5
+        text-sm
+        rounded
+        transition-all
+        duration-200
+        ease-in-out
+      "
+      role="tab"
+      [attr.aria-controls]="tabz.id ? tabz.id : ''"
+      [attr.aria-selected]="!!tabz.active"
+      [attr.id]="tabz.id ? tabz.id + '-link' : ''"
+      [class.bg-white]="tabz.active"
+      [class.shadow]="tabz.active"
+      [class.text-purple-500]="tabz.active"
+      [class.disabled]="tabz.disabled"
+      (click)="tabz.active = true"
+    >
+      <span [geochemNgTransclude]="tabz.headingRef">{{ tabz.heading }}</span>
+      <span
+        *ngIf="tabz.removable"
+        (click)="$event.preventDefault(); removeTab(tabz)"
+        class="bs-remove-tab"
+      >
+        &#10060;</span
+      >
+    </a>
+  </li>
+</ul>
+<div class="tab-content flex flex-grow">
+  <ng-content></ng-content>
+</div>

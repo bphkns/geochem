@@ -1,10 +1,11 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SidenavModule } from './sidenav/sidenav.module';
+import { NgModule } from '@angular/core';
 import { ButtonModule } from './button/button.module';
+import { SidenavModule } from './sidenav/sidenav.module';
+import { AlertModule } from './alert/alert.module';
 
 @NgModule({
   imports: [CommonModule],
-  exports: [SidenavModule, ButtonModule],
+  exports: [SidenavModule, ButtonModule, AlertModule],
 })
 export class UiModule {}

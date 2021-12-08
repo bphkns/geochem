@@ -6,6 +6,7 @@ specifiers:
   '@angular-eslint/eslint-plugin-template': 12.6.1
   '@angular-eslint/template-parser': 12.6.1
   '@angular/animations': 13.0.2
+  '@angular/cdk': ^13.0.3
   '@angular/cli': 13.0.3
   '@angular/common': 13.0.2
   '@angular/compiler': 13.0.2
@@ -26,7 +27,9 @@ specifiers:
   '@nestjs/swagger': ^5.1.5
   '@nestjs/testing': ^8.2.3
   '@nestjs/throttler': ^2.0.0
+  '@ngneat/dialog': ^2.0.0
   '@ngneat/helipopper': ^5.0.2
+  '@ngneat/hot-toast': ^4.0.0
   '@ngneat/overview': ^3.0.0
   '@ngneat/svg-generator': ^3.2.1
   '@ngneat/svg-icon': ^3.3.0
@@ -57,6 +60,7 @@ specifiers:
   '@typescript-eslint/parser': ~4.33.0
   ag-grid-angular: ^26.2.0
   ag-grid-community: ^26.2.0
+  ag-grid-enterprise: ^26.2.0
   amazon-qldb-driver-nodejs: ^2.2.0
   auth0: ^2.37.0
   autoprefixer: ^10.4.0
@@ -88,6 +92,7 @@ specifiers:
   rxjs: ^7.0.0
   source-map-support: ^0.5.20
   tailwindcss: ^2.2.19
+  tailwindcss-triangles: ^4.0.0
   tippy.js: ^6.3.7
   ts-jest: 27.0.5
   tslib: ^2.0.0
@@ -96,6 +101,7 @@ specifiers:
 
 dependencies:
   '@angular/animations': 13.0.2_@angular+core@13.0.2
+  '@angular/cdk': 13.0.3_2f613825cba5b20be657b6b3ae2dbf97
   '@angular/common': 13.0.2_@angular+core@13.0.2+rxjs@7.4.0
   '@angular/compiler': 13.0.2
   '@angular/core': 13.0.2_rxjs@7.4.0+zone.js@0.11.4
@@ -111,7 +117,9 @@ dependencies:
   '@nestjs/platform-fastify': 8.2.1_4e195730d90113ce1578bd999274c7a8
   '@nestjs/swagger': 5.1.5_516b578cfd75796250229d1f46b1699a
   '@nestjs/throttler': 2.0.0_9bdbff8c48260a6971831c56bdd8b21e
+  '@ngneat/dialog': 2.0.0_@angular+core@13.0.2
   '@ngneat/helipopper': 5.0.2_ee0577f155e31fb6318bcef7d82609d3
+  '@ngneat/hot-toast': 4.0.0_ee0577f155e31fb6318bcef7d82609d3
   '@ngneat/overview': 3.0.0_@angular+core@13.0.2
   '@ngneat/svg-icon': 3.3.0
   '@nrwl/angular': 13.2.3_10a708a834ee36350465cf52ec2fe2e0
@@ -120,6 +128,7 @@ dependencies:
   '@rx-angular/template': 1.0.0-beta.28_de96696bd2616694b4fa9ea9b8fbe11e
   ag-grid-angular: 26.2.0_74ecf7cefe37f895e33f979945e35a72
   ag-grid-community: 26.2.0
+  ag-grid-enterprise: 26.2.0
   amazon-qldb-driver-nodejs: 2.2.0_e01ec5ad55efd57f676294e316116d77
   auth0: 2.37.0
   aws-sdk: 2.1036.0
@@ -187,6 +196,7 @@ devDependencies:
   postcss: 8.3.11
   prettier: 2.4.1
   tailwindcss: 2.2.19_0c54bdadaf9d9c9c6c134cb2c6c061a3
+  tailwindcss-triangles: 4.0.0
   ts-jest: 27.0.5_d33d2ed89a37a5c63ac6738dc749e64b
   typescript: 4.4.4
 
@@ -481,6 +491,21 @@ packages:
     dependencies:
       '@angular/core': 13.0.2_rxjs@7.4.0+zone.js@0.11.4
       tslib: 2.3.1
+    dev: false
+
+  /@angular/cdk/13.0.3_2f613825cba5b20be657b6b3ae2dbf97:
+    resolution: {integrity: sha512-nPlnpdLk+Lady3l5eHh+csbHPOiTvfVpMrluUEnb1RAby07QQucUo7cYOKgFiVmSmaMwDBv2aGj1fAoXKzzc5g==}
+    peerDependencies:
+      '@angular/common': ^13.0.0 || ^14.0.0-0
+      '@angular/core': ^13.0.0 || ^14.0.0-0
+      rxjs: ^6.5.3 || ^7.4.0
+    dependencies:
+      '@angular/common': 13.0.2_@angular+core@13.0.2+rxjs@7.4.0
+      '@angular/core': 13.0.2_rxjs@7.4.0+zone.js@0.11.4
+      rxjs: 7.4.0
+      tslib: 2.3.1
+    optionalDependencies:
+      parse5: 5.1.1
     dev: false
 
   /@angular/cli/13.0.3:
@@ -2494,6 +2519,15 @@ packages:
       reflect-metadata: 0.1.13
     dev: false
 
+  /@ngneat/dialog/2.0.0_@angular+core@13.0.2:
+    resolution: {integrity: sha512-v5e1o3fPlOj1PBgTTr4yG154GFKZ314GB2mMshdUcdOPe2YAPLw0PJKy4GLHRgDuDJE3Bzg9J2lpEG2bL89Itw==}
+    peerDependencies:
+      '@angular/core': '>=13.0.0'
+    dependencies:
+      '@angular/core': 13.0.2_rxjs@7.4.0+zone.js@0.11.4
+      tslib: 2.3.1
+    dev: false
+
   /@ngneat/helipopper/5.0.2_ee0577f155e31fb6318bcef7d82609d3:
     resolution: {integrity: sha512-IAu3jTF7p5YovKI6V96URn8/h3jZTnWdN8r1PLO7uKu69Z78L7LoGO7/2+cpXtyL8G9hFiEAKtW/HxsQVcyezw==}
     peerDependencies:
@@ -2503,6 +2537,17 @@ packages:
       '@angular/core': 13.0.2_rxjs@7.4.0+zone.js@0.11.4
       '@ngneat/overview': 3.0.0_@angular+core@13.0.2
       tippy.js: 6.3.7
+      tslib: 2.3.1
+    dev: false
+
+  /@ngneat/hot-toast/4.0.0_ee0577f155e31fb6318bcef7d82609d3:
+    resolution: {integrity: sha512-J8CwQdav04XEOt+BdAD5ylMRJ8dlae6zNxru8sV8SkVhnjrLf6S9PXtCwlXcoz8FFtrtArkNNBdqK2fcK0Kn+Q==}
+    peerDependencies:
+      '@angular/core': '>=13.0.0'
+      '@ngneat/overview': '>=3.0.0'
+    dependencies:
+      '@angular/core': 13.0.2_rxjs@7.4.0+zone.js@0.11.4
+      '@ngneat/overview': 3.0.0_@angular+core@13.0.2
       tslib: 2.3.1
     dev: false
 
@@ -3800,6 +3845,10 @@ packages:
 
   /ag-grid-community/26.2.0:
     resolution: {integrity: sha512-YkNQUJ7EsmXbwfSrT4sIBYp1MbFku+ebEiqKc4+YFVZ5+nniHFzvSomHzFqbbkOtEfb42Gmo8cMNvBz9aPnZsQ==}
+    dev: false
+
+  /ag-grid-enterprise/26.2.0:
+    resolution: {integrity: sha512-I8WtqdH4/hMorKc5OtXMXk4vk+2wcnuR/y2ubPNRjZZYGfyLwFW9fyvYOQ3ic/zX8IWroonksYDBAwEW96/H6w==}
     dev: false
 
   /agent-base/4.2.1:
@@ -11658,6 +11707,13 @@ packages:
       slice-ansi: 4.0.0
       string-width: 4.2.3
       strip-ansi: 6.0.1
+
+  /tailwindcss-triangles/4.0.0:
+    resolution: {integrity: sha512-JiJMwMpapO/AlPpbsGsFSLdBvLOEWDdFIQBV8e2w9BTZkyEXFpBSRrk7LRbZPetsCU8hL6mysvACfBvZuLw90w==}
+    dependencies:
+      lodash: 4.17.21
+      postcss-value-parser: 4.1.0
+    dev: true
 
   /tailwindcss/2.2.19_0c54bdadaf9d9c9c6c134cb2c6c061a3:
     resolution: {integrity: sha512-6Ui7JSVtXadtTUo2NtkBBacobzWiQYVjYW0ZnKaP9S1ZCKQ0w7KVNz+YSDI/j7O7KCMHbOkz94ZMQhbT9pOqjw==}

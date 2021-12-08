@@ -36,6 +36,7 @@ async function bootstrap() {
     new ValidationPipe({
       enableDebugMessages: true,
       whitelist: true,
+      transform: true,
     })
   );
   await app.register(fastifyHelmet, {

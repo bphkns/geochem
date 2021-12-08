@@ -1,21 +1,40 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  ContentChild,
+  Directive,
+  EmbeddedViewRef,
+  HostBinding,
+  Input,
+  TemplateRef,
+  ViewContainerRef,
+} from '@angular/core';
 
-@Component({
-  selector: 'geochem-button',
-  template: `
-    <button
-      type="button"
-      class="py-2 px-4 flex justify-center items-center  bg-purple-600 hover:bg-purple-700 focus:ring-purple-500 focus:ring-offset-blue-200 text-white w-full transition ease-in duration-200
-      text-center text-sm  tracking-tight
-      shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded uppercase"
-    >
-      <ng-content> </ng-content>
-    </button>
-  `,
-  styles: [],
+@Directive({
+  selector: '[geochemButton]',
 })
-export class ButtonComponent implements OnInit {
-  constructor() {}
+export class ButtonDirective {
+  @ContentChild(`loader`)
+  loaderTmp!: TemplateRef<any>;
 
-  ngOnInit(): void {}
+  constructor(private viewContainerRef: ViewContainerRef) {}
+
+  private _loader = false;
+
+  @HostBinding('class')
+  classes = `py-1.5 px-4 flex justify-center items-center space-x-1  transition ease-in duration-200
+  text-center text-sm  tracking-tight
+  shadow focus:outline-none focus:ring-2 focus:ring-offset-2 rounded uppercase disabled:opacity-50 disabled:cursor-not-allowed`;
+
+  @Input()
+  @HostBinding('loader')
+  get loader() {
+    return this._loader;
+  }
+
+  set loader(status) {
+    this.viewContainerRef.clear();
+
+    if (status) this.viewContainerRef.createEmbeddedView(this.loaderTmp);
+
+    this._loader = status;
+  }
 }

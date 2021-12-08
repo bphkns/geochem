@@ -1,16 +1,10 @@
-import {
-  Controller,
-  Get,
-  Inject,
-  Logger,
-  Req,
-  UseGuards,
-} from '@nestjs/common';
+import { Controller, Get, Inject, Logger, UseGuards } from '@nestjs/common';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 import { QldbDriver } from 'amazon-qldb-driver-nodejs';
+import { ManagementClient } from 'auth0';
+import { AUTHZ_MGMT_CLIENT } from './auth/auth.provider';
 import { JwtAuthGuard } from './auth/guards/jwt.guard';
 import { DB_CONNECTION } from './db/db.provider';
-import { Permissions } from './decorators/permission.decorator';
 import { Status } from './models/status.entity';
 
 @ApiTags(`Status APIs`)
@@ -20,7 +14,10 @@ import { Status } from './models/status.entity';
 export class AppController {
   private logger = new Logger(AppController.name);
 
-  constructor(@Inject(DB_CONNECTION) private db: QldbDriver) {}
+  constructor(
+    @Inject(DB_CONNECTION) private db: QldbDriver,
+    @Inject(AUTHZ_MGMT_CLIENT) private mgmtClient: ManagementClient
+  ) {}
 
   /**
    * Status check endpoint
@@ -55,7 +52,9 @@ export class AppController {
   @UseGuards(JwtAuthGuard)
   @ApiBearerAuth()
   @Get(`protected`)
-  async protectionCheck(@Req() req) {
-    return req.user;
+  protectionCheck(): Status {
+    return {
+      status: 'OK',
+    };
   }
 }

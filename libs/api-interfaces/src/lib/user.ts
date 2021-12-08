@@ -5,6 +5,6 @@ export interface User {
   updated_at?: string | undefined;
   email?: string | undefined;
   email_verified?: boolean | undefined;
-  org_id?: string;
+  user_id?: string;
   roles: string[];
 }

@@ -5,7 +5,7 @@ import { AuthHelperService } from '../../../../auth/auth.service';
 @Component({
   selector: 'geochem-profile',
   template: `
-    <div class="flex space-x-2 items-center" *ngIf="user">
+    <div class="flex space-x-2  p-2 items-center rounded shadow" *ngIf="user">
       <div class="flex rounded-full">
         <img class="object-cover rounded-full w-6 h-6" [src]="user.picture" />
       </div>
@@ -25,14 +25,14 @@ import { AuthHelperService } from '../../../../auth/auth.service';
 
     <ng-template #one>
       <div
-        class="py-1 divide-y divide-gray-100"
+        class="py-1 divide-y divide-gray-100 w-52"
         role="menu"
         aria-orientation="vertical"
         aria-labelledby="options-menu"
       >
         <a
           href="#"
-          class="flex items-center  px-4 py-2 space-x-2 text-md text-gray-700 hover:bg-gray-100 hover:text-blue-700 dark:text-gray-100 dark:hover:text-white dark:hover:bg-gray-600"
+          class="flex items-center  px-4 py-1 space-x-2 text-md text-gray-700 hover:bg-gray-100 hover:text-blue-700 dark:text-gray-100 dark:hover:text-white dark:hover:bg-gray-600"
           role="menuitem"
         >
           <div class="flex items-center  p-1 rounded-full shadow-inner">
@@ -42,7 +42,7 @@ import { AuthHelperService } from '../../../../auth/auth.service';
         </a>
         <a
           href="#"
-          class="flex items-center  px-4 py-2 space-x-2 text-md text-gray-700 hover:bg-gray-100 hover:text-blue-700 dark:text-gray-100 dark:hover:text-white dark:hover:bg-gray-600"
+          class="flex items-center  px-4 py-1 space-x-2 text-md text-gray-700 hover:bg-gray-100 hover:text-blue-700 dark:text-gray-100 dark:hover:text-white dark:hover:bg-gray-600"
           role="menuitem"
           (click)="logout()"
         >

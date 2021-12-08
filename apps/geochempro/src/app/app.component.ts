@@ -24,13 +24,13 @@ export class AppComponent {
       name: 'Projects',
       link: 'pages/projects',
       key: 'list',
-      roles: ['*'],
+      roles: ['org-admin'],
     },
     {
       name: 'Settings',
       link: 'pages/settings',
       key: 'settings',
-      roles: ['*'],
+      roles: ['org-admin'],
     },
   ];
   constructor(
@@ -59,6 +59,8 @@ export class AppComponent {
   }
 
   login() {
-    this.authService.loginWithRedirect();
+    this.authService.loginWithRedirect({
+      redirectMethod: 'replace',
+    });
   }
 }

@@ -1,14 +1,14 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ButtonComponent } from './button.component';
-import { PrimaryButtonDirective } from './primary-button.directive';
+import { NgModule } from '@angular/core';
 import { AccentButtonDirective } from './accent-button.directive';
-import { WarnButtonDirective } from './warn-button.directive';
+import { ButtonDirective } from './button.component';
 import { IconButtonComponent } from './icon-button/icon-button.component';
+import { PrimaryButtonDirective } from './primary-button.directive';
+import { WarnButtonDirective } from './warn-button.directive';
 
 @NgModule({
   declarations: [
-    ButtonComponent,
+    ButtonDirective,
     PrimaryButtonDirective,
     AccentButtonDirective,
     WarnButtonDirective,
@@ -16,7 +16,7 @@ import { IconButtonComponent } from './icon-button/icon-button.component';
   ],
   imports: [CommonModule],
   exports: [
-    ButtonComponent,
+    ButtonDirective,
     PrimaryButtonDirective,
     AccentButtonDirective,
     WarnButtonDirective,

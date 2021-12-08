@@ -1,0 +1,99 @@
+<div class="flex justify-end px-2 py-2" role="button">
+  <div (click)="close()" class="text-gray-700">&#10006;</div>
+</div>
+<form
+  class="flex flex-col p-4"
+  [formGroup]="addUserForm"
+  (ngSubmit)="addUser()"
+>
+  <div class="relative mb-4">
+    <label for="required-email" class="text-gray-700 mb-2">
+      Email
+      <span class="text-red-500 required-dot"> * </span>
+    </label>
+    <input
+      formControlName="email"
+      type="text"
+      id="required-email"
+      class="
+        rounded
+        border-transparent
+        flex-1
+        appearance-none
+        border border-gray-300
+        w-full
+        py-2
+        px-2
+        bg-white
+        text-gray-700
+        placeholder-gray-400
+        shadow-sm
+        text-base
+        focus:outline-none
+        focus:ring-2
+        focus:ring-purple-600
+        focus:border-transparent
+      "
+      name="email"
+      placeholder="Your email"
+    />
+  </div>
+
+  <div class="relative mb-8">
+    <label for="required-role-id" class="text-gray-700 mb-2">
+      Role ID
+      <span class="text-red-500 required-dot"> * </span>
+    </label>
+    <input
+      type="text"
+      id="required-role-id"
+      formControlName="role_id"
+      class="
+        rounded
+        border-transparent
+        flex-1
+        appearance-none
+        border border-gray-300
+        w-full
+        py-2
+        px-2
+        bg-white
+        text-gray-700
+        placeholder-gray-400
+        shadow-sm
+        text-base
+        focus:outline-none
+        focus:ring-2
+        focus:ring-purple-600
+        focus:border-transparent
+      "
+      name="role-id"
+      placeholder="Enter Role Id"
+    />
+  </div>
+
+  <div class="flex justify-end">
+    <button
+      type="submit"
+      [disabled]="!addUserForm.valid"
+      class="
+        py-2
+        px-4
+        bg-indigo-600
+        hover:bg-indigo-700
+        focus:ring-indigo-500 focus:ring-offset-indigo-200
+        text-white
+        transition
+        ease-in
+        duration-200
+        text-center text-base
+        font-semibold
+        shadow-md
+        focus:outline-none focus:ring-2 focus:ring-offset-2
+        rounded
+      "
+    >
+      Add user
+    </button>
+  </div>
+</form>

@@ -1,6 +1,6 @@
 <ng-container *rxLet="user$; let user">
   <div *ngIf="user" class="flex-grow flex flex-col">
-    <div *ngIf="user.roles | hasRole: ['org-admin']" class="flex space-x-4">
+    <div class="flex space-x-4">
       <geochem-dashboard-card
         key="project-details"
         text="Projects"

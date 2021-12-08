@@ -1,3 +1,4 @@
+import { environment } from './../../../environments/environment';
 import { Injectable } from '@angular/core';
 import { AuthService } from '@auth0/auth0-angular';
 
@@ -6,10 +7,13 @@ export class AuthHelperService {
   constructor(private authService: AuthService) {}
 
   login() {
-    this.authService.loginWithRedirect();
+    this.authService.loginWithRedirect({});
   }
 
   logout() {
-    this.authService.logout({ localOnly: false });
+    console.log(1);
+    this.authService.logout({
+      returnTo: `${environment.auth.redirectUri}?code=INVALID_SESSION&state=INVALID`,
+    });
   }
 }

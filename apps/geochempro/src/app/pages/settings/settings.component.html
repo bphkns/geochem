@@ -1,11 +1,26 @@
-<div class="flex justify-end space-x-4">
-  <geochem-button> Add User </geochem-button>
-</div>
-<div class="ag-theme-balham flex-grow mt-2">
-  <ag-grid-angular
-    class="w-full h-full"
-    [rowData]="rowData"
-    [columnDefs]="columnDefs"
-  >
-  </ag-grid-angular>
+<div class="flex flex-grow">
+  <geochem-ui-tabset [justified]="true">
+    <geochem-ui-tab #tabUsers="tab">
+      <ng-template geochemTabHeading>
+        <svg-icon key="users"> </svg-icon>
+        <span class="ml-2">Users</span>
+      </ng-template>
+      <ng-container *ngIf="tabUsers.active">
+        <geochem-user> </geochem-user>
+      </ng-container>
+    </geochem-ui-tab>
+    <geochem-ui-tab #tabRoles="tab">
+      <ng-template geochemTabHeading>
+        <svg-icon key="user-role">Roles</svg-icon>
+        <span class="ml-2"> Roles</span>
+      </ng-template>
+      I've got an HTML heading. Pretty cool!
+    </geochem-ui-tab>
+    <geochem-ui-tab #tabPermissions="tab">
+      <ng-template geochemTabHeading>
+        <i><b>Tab 3</b></i>
+      </ng-template>
+      Tab with html tags in heading
+    </geochem-ui-tab>
+  </geochem-ui-tabset>
 </div>

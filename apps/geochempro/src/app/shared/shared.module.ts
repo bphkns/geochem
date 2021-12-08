@@ -1,12 +1,16 @@
+import { CdkStepperModule } from '@angular/cdk/stepper';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { UiModule } from '@geochem/ui';
+import { TabsModule, UiModule } from '@geochem/ui';
+import { DialogModule } from '@ngneat/dialog';
 import { TippyModule } from '@ngneat/helipopper';
 import { SvgIconsModule } from '@ngneat/svg-icon';
+import { LetModule, PushModule } from '@rx-angular/template';
 import { HasRolePipe } from './auth/role.pipe';
 import { ContainerComponent } from './components/container/container.component';
+import { CustomLoadingCellRenderer } from './components/custom-loading/custom-loading.component';
 import { DashboardCardComponent } from './components/dashboard-card/dashboard-card.component';
 import { ErrorNotFoundComponent } from './components/error/error-not-found/error-not-found.component';
 import { FooterComponent } from './components/footer/footer.component';
@@ -20,6 +24,8 @@ import { NavbarRightComponent } from './components/navbar/navbar-right/navbar-ri
 import { ProfileComponent } from './components/navbar/navbar-right/profile/profile.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { SidenavListComponent } from './components/sidenav-list/sidenav-list.component';
+import { StepperComponent } from './components/stepper/stepper.component';
+import { GeochemToastAlertComponent } from './components/toast-alert/toast-alert.component';
 @NgModule({
   declarations: [
     NavbarComponent,
@@ -37,6 +43,9 @@ import { SidenavListComponent } from './components/sidenav-list/sidenav-list.com
     ErrorNotFoundComponent,
     HasRolePipe,
     DashboardCardComponent,
+    CustomLoadingCellRenderer,
+    StepperComponent,
+    GeochemToastAlertComponent,
   ],
   imports: [
     CommonModule,
@@ -44,11 +53,18 @@ import { SidenavListComponent } from './components/sidenav-list/sidenav-list.com
     RouterModule.forChild([]),
     SvgIconsModule.forChild([]),
     TippyModule,
+    CdkStepperModule,
   ],
+  providers: [],
   exports: [
     ReactiveFormsModule,
     UiModule,
     SvgIconsModule,
+    TabsModule,
+    LetModule,
+    PushModule,
+    CdkStepperModule,
+    DialogModule,
     /**
      * Components
      */
@@ -67,6 +83,9 @@ import { SidenavListComponent } from './components/sidenav-list/sidenav-list.com
     ErrorNotFoundComponent,
     HasRolePipe,
     DashboardCardComponent,
+    CustomLoadingCellRenderer,
+    StepperComponent,
+    GeochemToastAlertComponent,
   ],
 })
 export class SharedModule {}

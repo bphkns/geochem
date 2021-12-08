@@ -7,4 +7,5 @@ export default registerAs('authZConfig', () => ({
   clientSecret: process.env.AUTHZ_CLIENT_SECRET,
   issuer: process.env.AUTHZ_ISSUER,
   algorithms: ['RS256'],
+  organization: process.env.AUTHZ_ORGANIZATION_ID,
 }));

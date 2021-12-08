@@ -8,6 +8,7 @@ import { AuthzModule } from './auth/authz.module';
 import authZConfig from './config/authZ.config';
 import databaseConfig from './config/database.config';
 import { connectionFactory } from './db/db.provider';
+import { UserModule } from './users/user.module';
 import { validate } from './validation/env.validation';
 @Module({
   imports: [
@@ -15,6 +16,7 @@ import { validate } from './validation/env.validation';
       load: [databaseConfig, authZConfig],
       validate,
       expandVariables: true,
+      isGlobal: true,
     }),
     LoggerModule.forRootAsync({
       imports: [ConfigModule],
@@ -59,6 +61,7 @@ import { validate } from './validation/env.validation';
       ttl: 60,
       limit: 10,
     }),
+    UserModule,
     AuthzModule,
   ],
   controllers: [AppController],

@@ -23,6 +23,9 @@ module.exports = {
       animation: ['hover', 'focus', 'active'],
       textColor: ['active', 'hover'],
       transitionDuration: ['active', 'hover', 'focus'],
+      borderRadius: ['first', 'last'],
+      opacity: ['disabled'],
+      cursor: ['disabled'],
     },
   },
   plugins: [
