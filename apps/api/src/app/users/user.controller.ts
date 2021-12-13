@@ -6,6 +6,7 @@ import {
   Logger,
   Param,
   Post,
+  Req,
   UseGuards,
   UseInterceptors,
 } from '@nestjs/common';
@@ -19,6 +20,7 @@ import {
 } from '@nestjs/swagger';
 import { JwtAuthGuard } from '../auth/guards/jwt.guard';
 import { Permissions } from '../decorators/permission.decorator';
+import { Role } from '../models/role.entity';
 import { User } from '../models/user.entity';
 import { PermissionsGuard } from './../auth/guards/permissions.guard';
 import { InviteUserDto } from './dto/invite-user.dto';
@@ -47,6 +49,16 @@ export class UserController {
   @Get()
   async findAll(): Promise<User[]> {
     return await this.userService.getUsers();
+  }
+
+  @UseInterceptors(ClassSerializerInterceptor)
+  @ApiForbiddenResponse({ description: 'Forbidden' })
+  @ApiInternalServerErrorResponse({ description: `Error` })
+  @Permissions('role:read')
+  @UseGuards(PermissionsGuard)
+  @Get('roles')
+  async findAllRoles(@Req() req): Promise<Role[]> {
+    return await this.userService.getRoles();
   }
 
   @UseInterceptors(ClassSerializerInterceptor)

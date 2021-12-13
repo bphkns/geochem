@@ -36,6 +36,8 @@ import { geochemTaskIcon } from './svg/task';
 import { geochemUserRoleIcon } from './svg/user-role';
 import { geochemUsersIcon } from './svg/users';
 import { geochemRefreshIcon } from './svg/refresh';
+import { geochemCircleIcon } from './svg/circle';
+import { animateFill } from 'tippy.js';
 
 const ICONS_LIST = [
   geochemHomeIcon,
@@ -53,6 +55,7 @@ const ICONS_LIST = [
   geochemUserRoleIcon,
   geochemAddUserIcon,
   geochemRefreshIcon,
+  geochemCircleIcon,
 ];
 
 @NgModule({
@@ -78,6 +81,7 @@ const ICONS_LIST = [
       httpInterceptor: {
         allowedList: [`${environment.apiUrl}/*`],
       },
+      cacheLocation: 'localstorage',
     }),
     LetModule,
     TippyModule.forRoot({
@@ -90,8 +94,18 @@ const ICONS_LIST = [
           appendTo: 'parent',
           arrow: true,
           offset: [0, 10],
-          animation: 'scale',
+          animation: 'shift-away',
           interactive: true,
+        },
+        select: {
+          ...popperVariation,
+          appendTo: 'parent',
+          arrow: false,
+          offset: [0, 5],
+          animateFill: true,
+          interactive: true,
+          animation: 'shift-away',
+          plugins: [animateFill],
         },
       },
     }),

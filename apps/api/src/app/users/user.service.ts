@@ -3,6 +3,7 @@ import { ConfigType } from '@nestjs/config';
 import { ManagementClient, ObjectWithId } from 'auth0';
 import { AUTHZ_MGMT_CLIENT } from '../auth/auth.provider';
 import authZConfig from '../config/authZ.config';
+import { Role } from '../models/role.entity';
 import { User } from '../models/user.entity';
 
 @Injectable()
@@ -44,12 +45,19 @@ export class UserService {
         connection_id: this.connection_id,
         client_id: `8LvAH7jktc5qFIQf6R4UigwGFceHICsR`,
         send_invitation_email: true,
-        // roles: [role_id],
+        roles: [role_id],
       }
     );
   }
 
   async getRole({ id }: ObjectWithId) {
     return await this.client.getRole({ id });
+  }
+
+  async getRoles() {
+    const roles = await this.client.getRoles();
+    return roles
+      .map((role) => new Role(role))
+      .filter((role) => !role.name.toLowerCase().includes(`super-admin`));
   }
 }

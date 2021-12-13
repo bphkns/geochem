@@ -1,9 +1,16 @@
-import { CanActivate, ExecutionContext, Injectable } from '@nestjs/common';
+import {
+  CanActivate,
+  ExecutionContext,
+  ForbiddenException,
+  Injectable,
+  Logger,
+} from '@nestjs/common';
 import { Observable } from 'rxjs';
 import { Reflector } from '@nestjs/core';
 
 @Injectable()
 export class PermissionsGuard implements CanActivate {
+  logger = new Logger(PermissionsGuard.name);
   constructor(private readonly reflector: Reflector) {}
 
   canActivate(
@@ -14,7 +21,7 @@ export class PermissionsGuard implements CanActivate {
       context.getHandler()
     );
 
-    const userPermissions = context.getArgs()[0].user.permissions;
+    const userPermissions = context.getArgs()[0]?.user?.permissions || [];
 
     if (!routePermissions) {
       return true;
@@ -25,6 +32,13 @@ export class PermissionsGuard implements CanActivate {
         userPermissions.includes(routePermission)
       );
 
-    return hasPermission();
+    if (hasPermission()) {
+      return true;
+    }
+
+    this.logger.error(`User doesn't have permission ${routePermissions}`);
+    throw new ForbiddenException(
+      `Not enough permissions to perform the operations`
+    );
   }
 }

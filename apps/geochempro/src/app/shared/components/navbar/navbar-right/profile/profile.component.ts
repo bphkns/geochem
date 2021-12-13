@@ -41,7 +41,6 @@ import { AuthHelperService } from '../../../../auth/auth.service';
           <span> Profile </span>
         </a>
         <a
-          href="#"
           class="flex items-center  px-4 py-1 space-x-2 text-md text-gray-700 hover:bg-gray-100 hover:text-blue-700 dark:text-gray-100 dark:hover:text-white dark:hover:bg-gray-600"
           role="menuitem"
           (click)="logout()"

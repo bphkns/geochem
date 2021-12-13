@@ -11,7 +11,6 @@ export class AuthHelperService {
   }
 
   logout() {
-    console.log(1);
     this.authService.logout({
       returnTo: `${environment.auth.redirectUri}?code=INVALID_SESSION&state=INVALID`,
     });

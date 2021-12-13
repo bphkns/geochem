@@ -1,6 +1,4 @@
-import { CdkStepper } from '@angular/cdk/stepper';
 import { Component, OnInit } from '@angular/core';
-import { StepperComponent } from '../../../shared/components/stepper/stepper.component';
 
 @Component({
   selector: 'geochem-projects-list',
@@ -10,6 +8,7 @@ import { StepperComponent } from '../../../shared/components/stepper/stepper.com
       :host {
         display: flex;
         flex-grow: 1;
+        flex-direction: column;
       }
     `,
   ],

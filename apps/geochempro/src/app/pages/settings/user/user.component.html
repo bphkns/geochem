@@ -1,18 +1,35 @@
 <div class="flex justify-end space-x-4">
   <button
     geochemButton
+    variant="primary"
     (click)="addUser()"
-    geochemPrimaryButton
-    [loader]="true"
+    [loading]="loadStates.addUser"
   >
-    <ng-template #loader>Loading</ng-template>
-    <svg-icon key="add-user" size="sm"> </svg-icon>
-    <span> Add User </span>
+    <svg-icon key="add-user" size="sm" class="mr-1"></svg-icon>
+    Add User
+
+    <ng-template buttonLoader>
+      <div class="flex items-center">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-4 w-4 animate-spin mr-1"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M8 12h.01M12 12h.01M16 12h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+          />
+        </svg>
+        Processing
+      </div>
+    </ng-template>
   </button>
-  <button geochemButton (click)="retry()" geochemAccentButton [disabled]="true">
-    <svg-icon key="refresh"></svg-icon>
-    <span>Refresh</span>
-  </button>
+
+  <button geochemButton variant="outline">Refresh</button>
 </div>
 <div class="ag-theme-balham flex-grow mt-2">
   <ag-grid-angular
@@ -68,4 +85,8 @@
       </button>
     </div>
   </geochem-ui-alert>
+</ng-template>
+
+<ng-template #loadingbtn>
+  <svg-icon key="circle"> </svg-icon>
 </ng-template>

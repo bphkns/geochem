@@ -13,6 +13,7 @@ import {
   startWith,
   Subject,
   switchMap,
+  take,
   tap,
 } from 'rxjs';
 import { DataType } from '../../../shared/components/toast-alert/toast-alert.component';
@@ -69,6 +70,11 @@ export class UserComponent implements OnInit {
 
   apiUrls = {
     getAll: `${environment.apiUrl}/users`,
+  };
+
+  loadStates = {
+    addUser: false,
+    refresh: true,
   };
 
   @ViewChild(`errorAlertTemplate`) errorAlertTemplate!: TemplateRef<any>;
@@ -128,9 +134,17 @@ export class UserComponent implements OnInit {
   }
 
   addUser() {
-    this.dialog.open(AddUserComponent, {
+    this.loadStates.addUser = true;
+    const ref = this.dialog.open(AddUserComponent, {
       closeButton: false,
+      enableClose: false,
     });
+    ref.afterClosed$
+      .pipe(
+        take(1),
+        tap(() => (this.loadStates.addUser = false))
+      )
+      .subscribe();
   }
 
   dismissed() {

@@ -1,10 +1,13 @@
 <div class="flex justify-end px-2 py-2" role="button">
   <div (click)="close()" class="text-gray-700">&#10006;</div>
 </div>
+<div class="px-4 py-2">
+  <h4 class="font-light text-lg">Invite new user</h4>
+</div>
 <form
   class="flex flex-col p-4"
   [formGroup]="addUserForm"
-  (ngSubmit)="addUser()"
+  (ngSubmit)="(addUserForm)"
 >
   <div class="relative mb-4">
     <label for="required-email" class="text-gray-700 mb-2">
@@ -44,56 +47,45 @@
       Role ID
       <span class="text-red-500 required-dot"> * </span>
     </label>
-    <input
-      type="text"
-      id="required-role-id"
+    <geochem-ui-list
+      [items]="roles$ | push"
       formControlName="role_id"
-      class="
-        rounded
-        border-transparent
-        flex-1
-        appearance-none
-        border border-gray-300
-        w-full
-        py-2
-        px-2
-        bg-white
-        text-gray-700
-        placeholder-gray-400
-        shadow-sm
-        text-base
-        focus:outline-none
-        focus:ring-2
-        focus:ring-purple-600
-        focus:border-transparent
-      "
-      name="role-id"
-      placeholder="Enter Role Id"
-    />
+      [loading]="loadingRoles$ | push"
+      [searchable]="true"
+      placeholder="Select Role"
+    >
+    </geochem-ui-list>
   </div>
 
-  <div class="flex justify-end">
+  <div class="flex justify-end space-x-2">
+    <button geochemButton variant="outline" (click)="close()">Cancel</button>
     <button
-      type="submit"
-      [disabled]="!addUserForm.valid"
-      class="
-        py-2
-        px-4
-        bg-indigo-600
-        hover:bg-indigo-700
-        focus:ring-indigo-500 focus:ring-offset-indigo-200
-        text-white
-        transition
-        ease-in
-        duration-200
-        text-center text-base
-        font-semibold
-        shadow-md
-        focus:outline-none focus:ring-2 focus:ring-offset-2
-        rounded
-      "
+      geochemButton
+      variant="primary"
+      (click)="addUser()"
+      [loading]="loadStates.adding"
     >
-      Add user
+      Add
+
+      <ng-template buttonLoader>
+        <div class="flex items-center">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-4 w-4 animate-spin mr-1"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M8 12h.01M12 12h.01M16 12h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+            />
+          </svg>
+          Adding
+        </div>
+      </ng-template>
     </button>
   </div>
 </form>

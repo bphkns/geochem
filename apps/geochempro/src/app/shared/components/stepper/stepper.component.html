@@ -1,0 +1,66 @@
+<section class="w-full h-full flex mt-1">
+  <div class="w-52 bg-gray-100 p-2 pr-0 space-y-2 border-r border-gray-200">
+    <div class="flex flex-col pl-2 border-l-4 border-gray-300">
+      <div
+        class="
+          font-light
+          flex
+          justify-between
+          items-center
+          p-2
+          rounded
+          transition-all
+          duration-300
+          ease-in-out
+        "
+        *ngFor="let step of steps; let i = index"
+        role="button"
+        [ngClass]="{
+          'bg-purple-100 font-semibold text-purple-700': selectedIndex === i
+        }"
+        (click)="selectStepByIndex(i)"
+      >
+        <ng-container *ngIf="step?.label; else defaultLabel">
+          {{ step?.label }}
+        </ng-container>
+
+        <ng-template #defaultLabel> Step {{ i + 1 }} </ng-template>
+
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-4 w-4 text-green-500"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          *ngIf="step.completed"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+          />
+        </svg>
+
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-4 w-4 text-red-500"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+          />
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <ng-container
+    [ngTemplateOutlet]="selected ? selected.content : null"
+  ></ng-container>
+</section>

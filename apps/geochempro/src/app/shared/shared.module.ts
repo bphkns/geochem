@@ -26,6 +26,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { SidenavListComponent } from './components/sidenav-list/sidenav-list.component';
 import { StepperComponent } from './components/stepper/stepper.component';
 import { GeochemToastAlertComponent } from './components/toast-alert/toast-alert.component';
+import { ScrollingModule } from '@angular/cdk/scrolling';
 @NgModule({
   declarations: [
     NavbarComponent,
@@ -65,6 +66,8 @@ import { GeochemToastAlertComponent } from './components/toast-alert/toast-alert
     PushModule,
     CdkStepperModule,
     DialogModule,
+    TippyModule,
+    ScrollingModule,
     /**
      * Components
      */

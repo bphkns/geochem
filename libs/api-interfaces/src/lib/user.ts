@@ -8,3 +8,9 @@ export interface User {
   user_id?: string;
   roles: string[];
 }
+
+export interface Role {
+  id?: string | undefined;
+  name?: string | undefined;
+  description?: string | undefined;
+}
